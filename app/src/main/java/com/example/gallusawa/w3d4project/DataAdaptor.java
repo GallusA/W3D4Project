@@ -74,7 +74,7 @@ public class DataAdaptor extends RecyclerView.Adapter<DataAdaptor.ViewHolder> {
             @Override
             public boolean onLongClick(final View v) {
                 new AlertDialog.Builder(v.getContext())
-                        .setIcon(R.drawable.background)
+                        .setIcon(R.drawable.ic_launcher)
                         .setTitle("Options")
                         .setMessage("Display image:")
                         .setNegativeButton("Small Image", new DialogInterface.OnClickListener()

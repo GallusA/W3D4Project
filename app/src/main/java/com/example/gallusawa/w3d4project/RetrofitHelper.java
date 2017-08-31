@@ -1,6 +1,6 @@
 package com.example.gallusawa.w3d4project;
 
-import android.database.Observable;
+
 
 import Assignment.FlickrPictures;
 import okhttp3.OkHttpClient;
@@ -13,8 +13,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 
-import static com.example.gallusawa.w3d4project.MainActivity.BASE_URL;
-
 
 /**
  * Created by gallusawa on 8/17/17.
@@ -22,11 +20,11 @@ import static com.example.gallusawa.w3d4project.MainActivity.BASE_URL;
 
 public class RetrofitHelper {
 
-    public static final String BASE_URL_TWO = "http://api.flickr.com/";
-    public static final String PATH = "services/feeds/photos_public.gne";
-    public static final String QUERY_TAG = "kitten";
-    public static final String QUERY_FORMAT = "json";
-    public static final String QUERY_CALL = "1";
+    public static final String BASE_URL ="http://api.flickr.com/";
+    public static final String PATH ="services/feeds/photos_public.gne";
+    public static final String QUERY_TAG ="kitten";
+    public static final String QUERY_FORMAT ="json";
+    public static final String QUERY_CALL ="1";
 
 
 
@@ -54,6 +52,8 @@ public class RetrofitHelper {
         return retrofit;
     }
 
+
+
     public static Call<FlickrPictures> getFflickrPicturesCall(){
 
         Retrofit retrofit = create();
@@ -62,22 +62,11 @@ public class RetrofitHelper {
 
     }
 
-    public static Observable<FlickrPictures> getFflickrPicturesObs(){
-
-        Retrofit retrofit = create();
-        PictureService pictureService = retrofit.create(PictureService.class);
-        return pictureService.getPictureObservable(QUERY_TAG, QUERY_FORMAT, QUERY_CALL);
-
-    }
-
     public interface PictureService{
 
         @GET(PATH)
-        Call<FlickrPictures> getPicturedata(@Query("tag") String title, @Query("format") String media, @Query("call") String datetaken);
+        Call<FlickrPictures> getPicturedata(@Query("tag") String tag, @Query("format") String format, @Query("nojsoncallback") String nojson);
 
-
-        @GET(PATH)
-        Observable<FlickrPictures> getPictureObservable(@Query("tag") String title, @Query("format") String media, @Query("call") String datetaken);
     }
 
 }
